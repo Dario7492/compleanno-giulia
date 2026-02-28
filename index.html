@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Festa di compleanno di Giulia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-content">
+      <div class="hero-tagline">Buon compleanno, Giulia!</div>
+      <h1>Una festa speciale<br>per i suoi 4 anni</h1>
+      <p class="hero-subtitle">
+        Colori, giochi e tante sorprese per festeggiare insieme il suo compleanno.<br>
+        24 settembre 2026 · dalle 16:30<br>
+        “L’isola che non c’è” · Via Mulini 4, Francavilla Fontana (BR)
+      </p>
+
+      <div id="countdown" class="countdown-container">
+        <div class="countdown-item">
+          <span id="days">00</span>
+          <label>Giorni</label>
+        </div>
+        <div class="countdown-item">
+          <span id="hours">00</span>
+          <label>Ore</label>
+        </div>
+        <div class="countdown-item">
+          <span id="minutes">00</span>
+          <label>Minuti</label>
+        </div>
+        <div class="countdown-item">
+          <span id="seconds">00</span>
+          <label>Secondi</label>
+        </div>
+      </div>
+
+      <p style="margin-top: 1rem; font-weight: 700; color: #e25a98; font-family: 'Lato', sans-serif; text-transform: uppercase; letter-spacing: 1px;">
+        È gradita la conferma entro il 14 Settembre
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#festa" class="btn-primary">Scopri la festa</a>
+        <a href="rsvp.html" class="btn-secondary">Conferma presenza</a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="top-nav">
+    <a href="#festa">La festa</a>
+    <a href="#programma">Programma</a>
+    <a href="#dove">Dove saremo</a>
+    <a href="rsvp.html">Conferma</a>
+    <a href="#foto">Foto</a>
+    <a href="#info-genitori">Info per i genitori</a>
+  </nav>
+
+  <main>
+    <section id="festa" class="section">
+      <div class="container">
+        <h2>La festa di Giulia</h2>
+        <p>Stiamo preparando un pomeriggio allegro e colorato per festeggiare il compleanno di Giulia, tra musica, giochi e dolcetti pensati per far divertire grandi e piccoli.</p>
+        <p>L’ambiente sarà semplice e accogliente, con uno spazio dedicato ai giochi e uno riservato al momento della torta, così ognuno potrà vivere la festa con i propri tempi.</p>
+      </div>
+    </section>
+
+    <section id="programma" class="section section-alt">
+      <div class="container">
+        <h2>Cosa abbiamo in mente</h2>
+        <p>La festa inizierà nel pomeriggio con un momento di accoglienza, così i bambini avranno il tempo di ambientarsi e iniziare a giocare insieme. Seguiranno giochi di gruppo e attività leggere, pensate per coinvolgere chi vorrà partecipare senza obblighi.</p>
+        <p>A metà pomeriggio ci ritroveremo tutti per cantare “tanti auguri” e spegnere le candeline, per poi continuare con ancora un po’ di musica, chiacchiere e merenda in compagnia.</p>
+      </div>
+    </section>
+
+    <section id="dove" class="section">
+      <div class="container">
+        <h2>Dove saremo</h2>
+        <p>La festa si svolgerà presso <strong>“L’isola che non c’è”</strong>, in Via Mulini 4 a Francavilla Fontana (BR), uno spazio pensato per i bambini e le loro famiglie.</p>
+        <p>Troverai un ambiente colorato e curato, adatto ai giochi e al momento della torta, con aree dedicate per muoversi e per sedersi con tranquillità.</p>
+        <div style="margin-top: 1.5rem;">
+          <a class="btn-primary" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Via+Mulini+4+Francavilla+Fontana">Apri in Google Maps</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="foto" class="section section-alt">
+      <div class="container text-center">
+        <h2>Condividi i tuoi scatti! 📸</h2>
+        <p>Aiutaci a ricordare ogni momento. Carica le tue foto nell'album della festa.</p>
+        
+        <div class="photo-sharing-card">
+          <div class="qr-wrapper">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://photos.app.goo.gl/74kCk1v51htJeT6N8" alt="QR Code Album" class="qr-image">
+            <div class="qr-instruction">Inquadra con la fotocamera</div>
+          </div>
+          <div class="divider-text">oppure</div>
+          <div class="sharing-action">
+            <a href="https://photos.app.goo.gl/74kCk1v51htJeT6N8" target="_blank" class="btn-primary">Apri Album Condiviso</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="info-genitori" class="section">
+      <div class="container">
+        <h2>Info per i genitori</h2>
+        <p>Aiutateci a rendere tutto perfetto! Segnalateci eventuali allergie, intolleranze o qualsiasi esigenza particolare dei vostri piccoli nella pagina di conferma: saremo felici di organizzarci al meglio per accogliervi!</p>
+        <p</p>
+        <p><strong>Per una migliore organizzazione, vi chiediamo gentilmente di confermare la vostra presenza entro il 14 settembre.</strong></p>
+        <a href="rsvp.html" class="btn-secondary">Vai alla pagina di conferma</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Festa di compleanno di Giulia · 24 settembre 2026</p>
+    </div>
+  </footer>
+
+
+
+  <script>
+    const countDownDate = new Date("Sep 24, 2026 16:30:00").getTime();
+    const x = setInterval(function() {
+      const now = new Date().getTime();
+      const distance = countDownDate - now;
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
+      document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+      document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+      document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML = "<p style='font-family: Playfair Display; color: #e25a98; font-size: 1.5rem;'>La festa è iniziata! 🎉</p>";
+      }
+    }, 1000);
+  </script>
+</body>
+</html>

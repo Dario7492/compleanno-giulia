@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Conferma presenza - Festa di Giulia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="rsvp-wrapper">
+  <main class="rsvp-main">
+    <div class="rsvp-card">
+      <div style="margin-bottom: 1.5rem;">
+        <a href="index.html" class="btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.75rem;">← Torna alla Home</a>
+      </div>
+      
+      <h1>Conferma la tua presenza</h1>
+      <p>I dati verranno inseriti automaticamente in un messaggio WhatsApp.</p>
+
+      <form id="rsvpForm" class="rsvp-form">
+        <div class="form-group">
+          <label for="genitore">Nome e cognome del genitore</label>
+          <input type="text" id="genitore" name="genitore" required>
+        </div>
+
+        <div class="form-group">
+          <label for="num_bambini">Quanti bambini?</label>
+          <input type="number" id="num_bambini" name="num_bambini" min="1" max="10" value="1" required>
+        </div>
+
+        <div id="container-nomi-bambini">
+          <div class="form-group">
+            <label>Nome del bambino/a</label>
+            <input type="text" class="input-nome-bambino" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="persone">Persone totali (Adulti + Bimbi)</label>
+            <input type="number" id="persone" name="persone" min="1" max="20" required>
+          </div>
+          <div class="form-group">
+            <label for="arrivo">Orario indicativo di arrivo</label>
+            <input type="text" id="arrivo" name="arrivo" placeholder="Es. 16:30">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="esigenze">Esigenze particolari (allergie, note)</label>
+          <textarea id="esigenze" name="esigenze" placeholder="Es. allergia al latte..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary btn-large">Invia conferma WhatsApp</button>
+      </form>
+
+      <div id="whatsappPreview" class="whatsapp-preview" style="display:none;">
+        <p><strong>Anteprima:</strong></p>
+        <div class="preview-message" style="background: white; padding: 15px; border-radius: 10px; margin: 10px 0; border: 1px solid #eee;"></div>
+        <button type="button" id="sendWhatsApp" class="btn-primary btn-large">Invia su WhatsApp</button>
+        <button type="button" id="editForm" class="btn-secondary btn-large">Modifica dati</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Festa di compleanno di Giulia · 24 settembre 2026</p>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById('rsvpForm');
+    const inputNumBambini = document.getElementById('num_bambini');
+    const containerNomi = document.getElementById('container-nomi-bambini');
+    const previewBox = document.getElementById('whatsappPreview');
+    const previewMessage = document.querySelector('.preview-message');
+
+    // Funzione per generare i campi nome in base al numero di bambini
+    inputNumBambini.addEventListener('input', function() {
+      const count = parseInt(this.value) || 1;
+      containerNomi.innerHTML = ''; // Svuota il contenitore
+      
+      for (let i = 1; i <= count; i++) {
+        const div = document.createElement('div');
+        div.className = 'form-group';
+        div.style.marginTop = '0.5rem';
+        div.innerHTML = `
+          <label>Nome bambino/a ${count > 1 ? i : ''}</label>
+          <input type="text" class="input-nome-bambino" required>
+        `;
+        containerNomi.appendChild(div);
+      }
+    });
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const genitore = document.getElementById('genitore').value.trim();
+      const persone = document.getElementById('persone').value.trim();
+      const arrivo = document.getElementById('arrivo').value.trim() || 'Non specificato';
+      const esigenze = document.getElementById('esigenze').value.trim() || 'Nessuna';
+      
+      // Raccoglie tutti i nomi dei bambini
+      const inputsNomi = document.querySelectorAll('.input-nome-bambino');
+      let nomiBambini = [];
+      inputsNomi.forEach(input => {
+        if(input.value.trim()) nomiBambini.push(input.value.trim());
+      });
+
+      const messaggioTesto = 
+        '*CONFERMA FESTA DI GIULIA*\n\n' +
+        '• *Genitore:* ' + genitore + '\n' +
+        '• *Bambini:* ' + nomiBambini.join(', ') + '\n' +
+        '• *Persone totali:* ' + persone + '\n' +
+        '• *Arrivo:* ' + arrivo + '\n' +
+        '• *Note/Allergie:* ' + esigenze;
+
+      previewMessage.innerText = messaggioTesto;
+      form.style.display = 'none';
+      previewBox.style.display = 'block';
+
+      window.rsvpData = {
+        numero: '3924265220',
+        messaggio: encodeURIComponent(messaggioTesto)
+      };
+    });
+
+    document.getElementById('sendWhatsApp').addEventListener('click', function() {
+      window.open('https://api.whatsapp.com/send?phone=' + window.rsvpData.numero + '&text=' + window.rsvpData.messaggio, '_blank');
+    });
+
+    document.getElementById('editForm').addEventListener('click', function() {
+      previewBox.style.display = 'none';
+      form.style.display = 'flex';
+    });
+  </script>
+</body>
+</html>
