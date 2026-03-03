@@ -72,11 +72,9 @@
     const previewBox = document.getElementById('whatsappPreview');
     const previewMessage = document.querySelector('.preview-message');
 
-    // Funzione per generare i campi nome in base al numero di bambini
     inputNumBambini.addEventListener('input', function() {
       const count = parseInt(this.value) || 1;
       containerNomi.innerHTML = ''; 
-      
       for (let i = 1; i <= count; i++) {
         const div = document.createElement('div');
         div.className = 'form-group';
@@ -91,11 +89,9 @@
 
     form.addEventListener('submit', function(e) {
       e.preventDefault();
-
       const genitore = document.getElementById('genitore').value.trim();
       const persone = document.getElementById('persone').value.trim();
       const esigenze = document.getElementById('esigenze').value.trim() || 'Nessuna';
-      
       const inputsNomi = document.querySelectorAll('.input-nome-bambino');
       let nomiBambini = [];
       inputsNomi.forEach(input => {

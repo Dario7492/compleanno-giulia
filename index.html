@@ -82,7 +82,7 @@
         <p>La festa si svolgerà presso <strong>“L’isola che non c’è”</strong>, in Via Mulini 4 a Francavilla Fontana (BR), uno spazio pensato per i bambini e le loro famiglie.</p>
         <p>Troverai un ambiente colorato e curato, adatto ai giochi e al momento della torta, con aree dedicate per muoversi e per sedersi con tranquillità.</p>
         <div style="margin-top: 1.5rem;">
-          <a class="btn-primary" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Via+Mulini+4+Francavilla+Fontana">Apri in Google Maps</a>
+          <a class="btn-primary" target="_blank" href="https://maps.google.com/?q=Via+Mulini+4+Francavilla+Fontana">Apri in Google Maps</a>
         </div>
       </div>
     </section>
@@ -109,7 +109,6 @@
       <div class="container">
         <h2>Info per i genitori</h2>
         <p>Aiutateci a rendere tutto perfetto! Segnalateci eventuali allergie, intolleranze o qualsiasi esigenza particolare dei vostri piccoli nella pagina di conferma: saremo felici di organizzarci al meglio per accogliervi!</p>
-        <p></p>
         <p><strong>Per una migliore organizzazione, vi chiediamo gentilmente di confermare la vostra presenza entro il 14 settembre.</strong></p>
         <a href="rsvp.html" class="btn-secondary">Vai alla pagina di conferma</a>
       </div>
@@ -122,9 +121,10 @@
     </div>
   </footer>
 
-
-
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  
   <script>
+    // --- GESTIONE COUNTDOWN ---
     const countDownDate = new Date("Sep 24, 2026 16:30:00").getTime();
     const x = setInterval(function() {
       const now = new Date().getTime();
@@ -144,6 +144,31 @@
         document.getElementById("countdown").innerHTML = "<p style='font-family: Playfair Display; color: #e25a98; font-size: 1.5rem;'>La festa è iniziata! 🎉</p>";
       }
     }, 1000);
+
+    // --- ANIMAZIONE FESTOSA TEMPORIZZATA (4 Secondi) ---
+    const end = Date.now() + (4 * 1000); // 4 secondi
+    const colors = ['#e25a98', '#ffb7c5', '#ff9c6c', '#ffffff'];
+
+    (function frame() {
+      confetti({
+        particleCount: 2,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0, y: 0.8 },
+        colors: colors
+      });
+      confetti({
+        particleCount: 2,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1, y: 0.8 },
+        colors: colors
+      });
+
+      if (Date.now() < end) {
+        requestAnimationFrame(frame);
+      }
+    }());
   </script>
 </body>
 </html>
