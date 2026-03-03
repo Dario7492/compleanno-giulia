@@ -120,15 +120,7 @@ body {
   color: #40223d;
 }
 
-.section h2::before {
-  content: '✨ ';
-  color: #e25a98;
-}
-
-.section h2::after {
-  content: ' ✨';
-  color: #e25a98;
-}
+/* Rimosso pseudo-elementi con scintille ✨ */
 
 .section p {
   margin-bottom: 1rem;
